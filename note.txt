@@ -74,3 +74,8 @@ export default function CartScreen(props) {
     </div>
   );
 }
+
+///===.>> 4.37 SignIn SignOut mongoose
+///===.>>5:27:23 register
+///===5.45.20 Shipping  สร้าง state ShippingAddress ไว้เหมือนเดิม
+//===6.03.27 Create Paypal 

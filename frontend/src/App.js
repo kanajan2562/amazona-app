@@ -11,6 +11,13 @@ import { signout } from './actions/userActions';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrderScreen from './screens/OrderScreen';
+import OrdersHistoryScreen from './screens/OrdersHistoryScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
+import UserListScreen from './screens/UserListScreen';
 
 
 function App() {
@@ -33,17 +40,17 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              amazona
+            094-3600123
             </Link>
           </div>
           
-          <div>
-            <Link to="/cart">
-              Cart
+          <div className="row">
+            <Link to="/cart"> 
+               Cart 
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}
-            </Link>
+            </Link> &nbsp;&nbsp;
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -51,15 +58,41 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="#signout" onClick={signoutHandler}>Sign Out
+                    <Link to="/profile">User Profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderhistory">Order History</Link>
+                  </li>
+                  <li>
+                    <Link to="#signout" onClick={signoutHandler}>Sign Out 
                     </Link>
                   </li>
                 </ul>
               </div>
             ) : (
-              <Link to="/signin">Sign In</Link>
-            )
-            }
+              <Link to="/signin">Sign In&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+            )}
+            {userInfo && userInfo.isAdmin && (
+                <div className="dropdown">
+                  <Link to = "#admin" >
+                    Admin <i className ="fa fa-caret-down"></i>
+                  </Link>
+                  <ul className="dropdown-content">
+                      <li>
+                          <Link to="/dashboard">Dashboard</Link>
+                      </li>
+                      <li>
+                          <Link to="/productlist">Products</Link>
+                      </li>
+                      <li>
+                          <Link to="/orderlist">Orders</Link>
+                      </li>
+                      <li>
+                          <Link to="/userlist">Users</Link>
+                      </li>
+                  </ul>
+                </div>
+            )}
           </div>
         </header>
 
@@ -70,7 +103,16 @@ function App() {
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/shipping" component={ShippingAddressScreen}></Route>
           <Route path="/payment" component={PaymentMethodScreen}></Route>
+          <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+          <Route path="/order/:id" component={OrderScreen}></Route>
+          <Route path="/orderhistory" component={OrdersHistoryScreen}></Route>
+
+          <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute> 
+          
+          <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
+
           <Route path="/" component={HomeScreen} exact></Route>
+          
 
         </main>
 

@@ -78,4 +78,10 @@ export default function CartScreen(props) {
 ///===.>> 4.37 SignIn SignOut mongoose
 ///===.>>5:27:23 register
 ///===5.45.20 Shipping  สร้าง state ShippingAddress ไว้เหมือนเดิม
-//===6.03.27 Create Paypal 
+//===6.03.27 Create Paypal ,placeOrder SumTotal Tax
+//===6.32 BackEnd PlaceOrder Api In DataBase
+//===6.51.36 Implement PlaceOrder Action
+//===7.08.28 Create Order Screen
+//===7.27.42 Add PayPal Button
+//===8.38.48 Update User Profile
+//===9.00.42 Create Admin View
